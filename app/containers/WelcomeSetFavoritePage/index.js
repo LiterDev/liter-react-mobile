@@ -17,9 +17,7 @@ import {
 import { loadAuth } from 'containers/Auth/actions';
 
 import withClosePageWrapper from 'components/PageWrappers/withClosePageWrapper';
-import Login from './WellcomeSetFavorite';
-
-const withLogin = withClosePageWrapper()(Login);
+import WelcomeSetFavorite from './WelcomeSetFavorite';
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmitLogin: (username, password) => {
@@ -44,5 +42,5 @@ const withSaga = injectSaga({ key: 'auth', saga: authSaga });
 export default withRouter(compose(
   withConnect,
   // withSaga
-)(withLogin));
+)(WelcomeSetFavorite));
 export { mapDispatchToProps };

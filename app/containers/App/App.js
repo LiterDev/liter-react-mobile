@@ -18,6 +18,7 @@ import HomePage from 'containers/HomePage';
 import ReviewListPage from 'containers/ReviewListPage';
 import ReviewDetailPage from 'containers/ReviewDetailPage';
 import LoginPage from 'containers/LoginPage';
+import WelcomeSetFavoritePage from 'containers/WelcomeSetFavoritePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage';
 
 import Header from 'components/Header';
@@ -64,7 +65,7 @@ const styles = (theme) => ({
     marginRight: 0
   }
 });
-const appBarBlackList = ['/login', '/review/'];
+const appBarBlackList = ['/login', '/review/', '/welcome_set_favorite'];
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -150,6 +151,7 @@ class App extends React.Component {
               path="/(login|sign_in|find_password)/"
               component={LoginPage}
             />
+            <Route path="/welcome_set_favorite" component={WelcomeSetFavoritePage} />
             <Route path="" component={NotFoundPage} />
           </Switch>
           <div hidden={this.handleAppBarHidden()}>
