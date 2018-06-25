@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Route } from 'react-router-dom';
 
-import Header from 'components/Header';
+import Header from 'components/Headers/index';
 import Footer from 'components/Footers/index';
 import App from '../index';
 

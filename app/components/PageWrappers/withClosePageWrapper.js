@@ -10,21 +10,17 @@ import CloseButton from 'components/Buttons/CloseButton';
 
 const modalHeaderStyle = {
   width: '100%',
-  borderBottom: '1px solid #b1b1b1',
+  borderBottom: '0.4px solid #f5f5f5',
   position: 'fixed',
   top: 0,
   backgroundColor: 'white',
   zIndex: 100
 };
 const rootStyle = {
-  paddingTop: 50,
+  paddingTop: 48,
   // wtf slick width issue
   width: '100vw'
 };
-
-const styles = (theme) => {
-
-}
 
 const withClosePageWrapper = () => (WrappedComponent) => {
   class closerClass extends React.Component {

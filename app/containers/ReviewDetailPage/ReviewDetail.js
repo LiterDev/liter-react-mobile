@@ -18,6 +18,9 @@ import IconButton from '@material-ui/core/IconButton';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import Typography from '@material-ui/core/Typography';
 
+import DefaultCardHeader from 'components/Headers/DefaultCardHeader';
+import DefaultCardFooter from 'components/Footers/DefaultCardFooter';
+
 import Slider from 'components/Sliders/DefaultSlider';
 import ContentsFooter from 'components/Footers/ContentsFooter';
 import HashTagBox from 'components/Sections/HashTagBox';
@@ -60,7 +63,7 @@ const hashTagList = [
 ];
 const styles = (theme) => ({
   ReviewDetailRoot: {
-    // marginTop: 160
+    background: 'white',
   },
   header: {},
   contents: {
@@ -69,6 +72,8 @@ const styles = (theme) => ({
   },
   footer: {}
 });
+
+const avatarImageUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-6gG0UXRs6Mn7E5W0xWtMWl0gnvq4BXXwTtdj2LMXOHgGjjUo';
 
 class ReviewDetail extends React.PureComponent {
   // eslint-disable-line react/prefer-stateless-function
@@ -85,36 +90,21 @@ class ReviewDetail extends React.PureComponent {
             content="A React.js Boilerplate application"
           />
         </Helmet>
-        <div className={classes.header}>
-          <CardHeader
-            avatar={
-              <Avatar aria-label="Recipe" className={classes.avatar}>
-                R
-              </Avatar>
-            }
-            action={
-              <IconButton>
-                <MoreHorizIcon />
-              </IconButton>
-            }
-            title="Shrimp and Chorizo Paella"
-            subheader="September 14, 2016"
-          />
-        </div>
+        <DefaultCardHeader avatarImageUrl={avatarImageUrl}/>
+
         <Typography variant="title" gutterBottom align={'center'}>
           ReviewDetail Title
         </Typography>
         <Slider items={items} />
         <div className={classes.contents}>
-          <Typography gutterBottom>
+          <Typography gutterBottom variant="body2">
             {
               'We are empirically mapping the variant property to a range of different DOM element types. For instance, h1 to h6. If you wish to change that mapping, you can provide your own. Alternatively, you can use the component property.'
             }
           </Typography>
           <HashTagBox hashTagList={hashTagList} />
-          {/*<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />*/}
-          <ContentsFooter />
         </div>
+          <DefaultCardFooter />
       </div>
     );
   }

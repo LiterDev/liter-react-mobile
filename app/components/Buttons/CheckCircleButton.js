@@ -24,7 +24,7 @@ function CheckCircleButton(props) {
       aria-label={'close-button'}
       onClick={onClick}
     >
-      <CloseIcon />
+      <CheckCircleIcon />
     </IconButton>
   );
 }

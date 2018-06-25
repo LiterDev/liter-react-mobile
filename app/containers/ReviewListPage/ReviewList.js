@@ -18,7 +18,7 @@ import root from '../../utils/rootSaga';
 
 const styles = (theme) => ({
   MainWrapper: {
-    marginTop: 160,
+    marginTop: 70,
   },
 });
 

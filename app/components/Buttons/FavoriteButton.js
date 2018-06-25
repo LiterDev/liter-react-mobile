@@ -5,32 +5,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-// import IconButton from '@material-ui/core/IconButton';
+import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const styles = (theme) => ({
   root: {
-    margin: 0,
-    minWidth: theme.spacing.unit * 8,
-    height: theme.spacing.unit * 4,
-    padding: 4,
+    width: theme.spacing.unit * 5,
+    height: theme.spacing.unit * 5,
+  },
+  icon: {
+    fontSize: theme.fontSize.icon.default,
+  },
+  label: {
+    fontSize: theme.fontSize.iconLabel.default,
+    marginLeft: -theme.spacing.unit,
+    verticalAlign: 'middle'
   }
 });
 
 function FavoriteButton(props) {
-  const { classes, onClick, isFavorite = false, favoriteCount = 0 } = props;
+  const { classes, onClick, isFavorite = false, label = 0 } = props;
 
   return (
-    <Button
-      className={classes.root}
-      aria-label={'close-button'}
-      onClick={onClick}
-    >
-      {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-       {favoriteCount}
-    </Button>
+    <div>
+      <IconButton
+        className={classes.root}
+        aria-label="Add to favorites"
+        onClick={onClick}
+      >
+        {isFavorite ? <FavoriteIcon className={classes.icon} /> : <FavoriteBorderIcon className={classes.icon} />}
+      </IconButton>
+      <span className={classes.label}>{label}</span>
+    </div>
   );
 }
 

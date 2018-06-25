@@ -6,29 +6,41 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const styles = (theme) => ({
   root: {
-    margin: 0,
-    minWidth: theme.spacing.unit * 8,
-    height: theme.spacing.unit * 4,
-    padding: 4,
+    width: theme.spacing.unit * 5,
+    height: theme.spacing.unit * 5,
+  },
+  icon: {
+    fontSize: theme.fontSize.icon.default,
+  },
+  label: {
+    color: theme.palette.primary['600'],
+    fontSize: theme.fontSize.iconLabel.default,
+    fontWeight: 500,
+    marginLeft: -theme.spacing.unit,
+    verticalAlign: 'middle'
   }
 });
 
 function DollarCountButton(props) {
-  const { classes, onClick, dollerTotal = 0 } = props;
+  const { classes, onClick, label = 0 } = props;
 
   return (
-    <Button
-      className={classes.root}
-      aria-label={'close-button'}
-      onClick={onClick}
-    >
-      {<ExpandMoreIcon />}
-      {`$ ${dollerTotal || 211.1}`}
-    </Button>
+    <div>
+      <IconButton
+        className={classes.root}
+        aria-label={'count dollar'}
+        onClick={onClick}
+      >
+        {<ExpandMoreIcon className={classes.icon} />}
+      </IconButton>
+      <span className={classes.label}>{`$${label}`}</span>
+    </div>
   );
 }
 

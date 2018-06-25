@@ -8,8 +8,8 @@ import Slider from 'react-slick';
 
 const styles = (theme) => ({
   root: {
-    marginTop: 40,
-    marginBottom: 50,
+    marginTop: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 4,
     width: '100%'
   }
 });

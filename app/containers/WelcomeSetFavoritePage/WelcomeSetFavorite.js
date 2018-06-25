@@ -36,6 +36,19 @@ const styles = (theme) => ({
     display: 'flex',
     justifyContent: 'space-between'
   },
+  header: {
+    marginTop: theme.spacing.unit * 4,
+    marginBottom: theme.spacing.unit * 5,
+  },
+  buttonContainer: {
+    // padding: theme.spacing.unit,
+    position: 'absolute',
+    bottom: 20,
+    width: 260,
+  },
+    root: {
+      background: 'red'
+    }
 });
 const tileData = [
   {
@@ -151,14 +164,21 @@ class WelcomeSetFavorite extends React.PureComponent {
         <Helmet titleTemplate="%s - Login" defaultTitle="title">
           <meta name="description" content="LoginPage" />
         </Helmet>
-        <Typography variant="title" gutterBottom align={'center'}>
-          LITER에 오신 것을 환영합니다.
-        </Typography>
-        <Typography variant="subheading" gutterBottom align={'center'}>
-          관심사 5개 이상 선택하세요.
-        </Typography>
+        <div className={classes.header}>
+          <Typography variant="title" gutterBottom align={'center'}>
+            LITER에 오신 것을 환영합니다.
+          </Typography>
+          <Typography variant="subheading" gutterBottom align={'center'}>
+            관심사 5개 이상 선택하세요.
+          </Typography>
+        </div>
         {/*className={classes.demo}*/}
         <GridSquareBoxSection tileData={tileData} />
+        <div className={classes.buttonContainer}>
+          <Button className={classes.root} color="primary" >
+          asdasd
+          </Button>
+        </div>
       </div>
     );
   }

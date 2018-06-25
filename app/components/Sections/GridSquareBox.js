@@ -6,6 +6,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
+import CheckCircleButton from 'components/Buttons/CheckCircleButton';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+
 
 const styles = (theme) => ({
   flexContainer: {
@@ -41,7 +44,10 @@ const styles = (theme) => ({
 
   header: {
     width: '100%',
-
+    textAlign: 'right',
+  },
+  icon: {
+    margin: theme.spacing.unit / 4
   },
   footer: {
     fontSize: 12,
@@ -63,7 +69,9 @@ class GridSquareBox extends React.Component {
               className={classes.flexItem}
               style={{ backgroundImage: `url(${imageUrl})` }}
             >
-              <button />
+              <div className={classes.header}>
+                <CheckCircleIcon className={classes.icon} color="primary" />
+              </div>
 
               <div className={classes.footer}>
                 <span>{`#${title}`}</span>

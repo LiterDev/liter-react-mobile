@@ -32,8 +32,6 @@ class AppWrapper extends React.Component {
 AppWrapper.propTypes = {
   children: PropTypes.node.isRequired,
   location: PropTypes.object,
-  // pageContext: PropTypes.object,
-  // uiTheme: PropTypes.object.isRequired
 };
 
 export default withRouter(

@@ -10,26 +10,27 @@ import Button from '@material-ui/core/Button';
 import ShareIcon from '@material-ui/icons/Share';
 
 const styles = (theme) => ({
-  root: {
-    margin: 0,
-    minWidth: theme.spacing.unit * 8,
-    height: theme.spacing.unit * 4,
-    padding: 4,
+  root: {},
+  icon: {
+    fontSize: theme.fontSize.icon.default
+  },
+  label: {
+    marginLeft: -theme.spacing.unit,
+    fontSize: theme.fontSize.iconLabel.default,
+    verticalAlign: 'middle'
   }
 });
 
 function ShareButton(props) {
-  const { classes, onClick, shareCount = 0 } = props;
+  const { classes, onClick, label = 0 } = props;
 
   return (
-    <Button
-      className={classes.root}
-      aria-label={'close-button'}
-      onClick={onClick}
-    >
-      {<ShareIcon />}
-      {shareCount}
-    </Button>
+    <div>
+      <IconButton className={classes.root} aria-label="Share" onClick={onClick}>
+        <ShareIcon className={classes.icon} />
+      </IconButton>
+      <span className={classes.label}>{label}</span>
+    </div>
   );
 }
 

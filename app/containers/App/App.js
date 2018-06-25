@@ -21,7 +21,7 @@ import LoginPage from 'containers/LoginPage';
 import WelcomeSetFavoritePage from 'containers/WelcomeSetFavoritePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage';
 
-import Header from 'components/Header';
+import Header from 'components/Headers/index';
 import Footer from 'components/Footers/index';
 import AppBar from 'components/SearchAppBar';
 import Drawer from 'components/AppDrawer';
@@ -155,7 +155,7 @@ class App extends React.Component {
             <Route path="" component={NotFoundPage} />
           </Switch>
           <div hidden={this.handleAppBarHidden()}>
-            <Footer />
+            {/*<Footer />*/}
           </div>
         </main>
       </div>

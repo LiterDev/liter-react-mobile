@@ -2,27 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import classnames from 'classnames';
+import classNames from 'classnames';
 
 import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import red from '@material-ui/core/colors/red';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+
+import DefaultCardHeader from 'components/Headers/DefaultCardHeader';
+import ReviewListCardContent from 'components/Sections/ReviewListCardContent';
+import DefaultCardFooter from 'components/Footers/DefaultCardFooter';
 
 const styles = (theme) => ({
   card: {
-    // maxWidth: 400,
-    margin: 'auto'
+    margin: 'auto',
+    marginTop: 10,
+    boxShadow: 'none'
   },
   media: {
     height: 0,
@@ -40,13 +40,12 @@ const styles = (theme) => ({
   },
   expandOpen: {
     transform: 'rotate(180deg)'
-  },
-  avatar: {
-    backgroundColor: red[500]
   }
 });
 
 const imageUrl = 'http://cfile217.uf.daum.net/image/27458C4B5427B61919A21A';
+const avatarImageUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-6gG0UXRs6Mn7E5W0xWtMWl0gnvq4BXXwTtdj2LMXOHgGjjUo';
+
 
 class ReviewThumbnailCard extends React.Component {
   state = { expanded: false };
@@ -61,55 +60,27 @@ class ReviewThumbnailCard extends React.Component {
     return (
       <div>
         <Card className={classes.card}>
-          <CardHeader
-            avatar={
-              <Avatar aria-label="Recipe" className={classes.avatar}>
-                R
-              </Avatar>
-            }
-            action={
-              <IconButton>
-                <MoreHorizIcon />
-              </IconButton>
-            }
-            title="Shrimp and Chorizo Paella"
-            subheader="September 14, 2016"
-          />
-          <Link to={`/login`} style={{ textDecoration: 'none' }}>
-            LOGIN
-          </Link>
-          <Link to={`/review/${reviewId}`} style={{ textDecoration: 'none' }}>
-            <CardMedia
-              className={classes.media}
-              image={imageUrl}
-              title="Contemplative Reptile"
-            />
-            <CardContent>
-              <Typography component="p">
-                This impressive paella is a perfect party dish and a fun meal to
-                cook together with your guests. Add 1 cup of frozen peas along
-                with the mussels, if you like.
-              </Typography>
-            </CardContent>
-          </Link>
-          <CardActions className={classes.actions} disableActionSpacing>
-            <IconButton aria-label="Add to favorites">
-              <FavoriteIcon />
-            </IconButton>
-            <IconButton aria-label="Share">
-              <ShareIcon />
-            </IconButton>
-            <IconButton
-              className={classnames(classes.expand, {
-                [classes.expandOpen]: this.state.expanded
-              })}
-              onClick={this.handleExpandClick}
-              aria-expanded={this.state.expanded}
-              aria-label="Show more"
-            >
-              <ExpandMoreIcon />
-            </IconButton>
-          </CardActions>
+          <DefaultCardHeader avatarImageUrl={avatarImageUrl} />
+          <ReviewListCardContent reviewId={reviewId} imageUrl={imageUrl} />
+          <DefaultCardFooter label={reviewId}/>
+          {/*<CardActions className={classes.actions} disableActionSpacing>*/}
+            {/*<IconButton aria-label="Add to favorites">*/}
+              {/*<FavoriteIcon />*/}
+            {/*</IconButton>*/}
+            {/*<IconButton aria-label="Share">*/}
+              {/*<ShareIcon />*/}
+            {/*</IconButton>*/}
+            {/*<IconButton*/}
+              {/*className={classNames(classes.expand, {*/}
+                {/*[classes.expandOpen]: this.state.expanded*/}
+              {/*})}*/}
+              {/*onClick={this.handleExpandClick}*/}
+              {/*aria-expanded={this.state.expanded}*/}
+              {/*aria-label="Show more"*/}
+            {/*>*/}
+              {/*<ExpandMoreIcon />*/}
+            {/*</IconButton>*/}
+          {/*</CardActions>*/}
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
             <CardContent>
               <Typography paragraph variant="body2">
