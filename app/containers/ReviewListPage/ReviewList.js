@@ -71,7 +71,7 @@ class ReviewList extends React.Component {
         </Helmet>
         <span id="scrollIndicator" />
         <div>
-          {[1, 2, 3, 4, 5, 6, 7, 9, 10].map((v, index) => (
+          {[1, 2, 3, 4, 5, 6, 7, 9, 10,11,12,13,14,15].map((v, index) => (
             <ReviewThumbnailCard key={index} reviewId={index} />
           ))}
         </div>

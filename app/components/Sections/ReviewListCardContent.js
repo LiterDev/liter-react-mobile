@@ -26,7 +26,7 @@ const styles = (theme) => ({
 
     position: 'absolute',
     bottom: 0,
-    display: 'flex',
+    display: 'flex'
   },
   media: {
     marginLeft: theme.spacing.unit * 2,
@@ -44,16 +44,19 @@ class ReviewListCardContent extends React.Component {
   render() {
     const { classes, reviewId, imageUrl, title, content } = this.props;
     return [
-      <div className={classes.mediaWrapper}>
+      <div
+        key={'content' + reviewId + imageUrl}
+        className={classes.mediaWrapper}
+      >
         <Link
           key={imageUrl + title}
           to={`/review/${reviewId}`}
           style={{ textDecoration: 'none' }}
         >
           <CardMedia
-            className={classes.media}
-            image={imageUrl}
-            title="Contemplative Reptile"
+          className={classes.media}
+          image={imageUrl}
+          title="Contemplative Reptile"
           />
         </Link>
         <div className={classes.mediaInnerButtonContainer}>

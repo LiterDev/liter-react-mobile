@@ -1,18 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Banner from './images/banner.jpg';
-
 import Typography from '@material-ui/core/Typography';
+
+import Banner from './images/banner.jpg';
+import Logo from 'images/literLogo@2x.png';
 
 const styles = (theme) => ({
   container: {
     marginTop: theme.spacing.unit * 4,
-    marginBottom: theme.spacing.unit * 4
+    marginBottom: theme.spacing.unit * 4,
+    textAlign: 'center'
   },
   banner: {
-    width: '100%'
-  },
+    width: 130,
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2
+  }
 });
 
 class SimpleImageHeader extends React.PureComponent {
@@ -22,13 +26,17 @@ class SimpleImageHeader extends React.PureComponent {
     // console.log(this.props);
     return (
       <div className={classes.container}>
-        <img
-          className={classes.banner}
-          src={Banner}
-          alt={`LITER - 세상 모든 리뷰를 경험해보세요`}
-        />
         <div>
-          <Typography variant="subheading" align="center">세상 모든 리뷰를 경험해보세요</Typography>
+          <img
+            className={classes.banner}
+            src={Logo}
+            alt={`LITER - 세상 모든 리뷰를 경험해보세요`}
+          />
+        </div>
+        <div>
+          <Typography variant="subheading" align="center">
+            세상 모든 리뷰를 경험해보세요
+          </Typography>
         </div>
       </div>
     );

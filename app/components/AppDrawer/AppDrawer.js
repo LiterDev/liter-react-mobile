@@ -18,7 +18,7 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = (theme) => ({
   root: {
     // [theme.breakpoints.up('lg')]: {
-    //   width: 250
+      width: '60%'
     // }
   },
   drawerHeader: {
