@@ -13,7 +13,7 @@ const styles = (theme) => ({
   container: {},
   button: {
     boxShadow: 'none',
-    height: theme.spacing.unit * 5
+    height: theme.spacing.unit * 6
   },
   disabled: {
     backgroundColor: theme.paltte
@@ -91,7 +91,7 @@ class LoginForm extends React.Component {
     super(props);
 
     this.state = {
-      username: 'test',
+      username: '',
       password: 'test1234!T'
     };
     this.handleChange = this.handleChange.bind(this);
@@ -104,6 +104,7 @@ class LoginForm extends React.Component {
   };
 
   render() {
+    const { username, password } = this.state;
     const { classes, location, pathname, onSubmitLogin, auth } = this.props;
     const camelPathname = _.camelCase(pathname);
 
@@ -129,8 +130,9 @@ class LoginForm extends React.Component {
 
     const renderInput2 = (props) => (
       <Input
-        key={props.placeholder}
         className={classNames(classes.input)}
+        onChange={this.handleChange(props.key)}
+        value={this.state[props.key]}
         type="text"
         disableUnderline
         {...props}
@@ -138,10 +140,14 @@ class LoginForm extends React.Component {
     );
 
     return [
-      renderInput2({ placeholder: '사용자 이름' }),
-      renderInput2({ placeholder: '비밀번호' }),
+      renderInput2({ key: 'username', placeholder: '사용자 이름 : test' }),
+      renderInput2({ type:'password', key: 'password', placeholder: '비밀번호 : test1234!T' }),
       <Button
-        className={classNames(classes.button, classes.fillButton, classes.disabled)}
+        className={classNames(
+          classes.button,
+          classes.fillButton,
+          classes.disabled
+        )}
         variant="contained"
         color="primary"
         onClick={() => {

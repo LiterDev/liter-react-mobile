@@ -18,8 +18,10 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = (theme) => ({
   root: {
     // [theme.breakpoints.up('lg')]: {
-      width: '60%'
     // }
+  },
+  paper: {
+    width: '50%'
   },
   drawerHeader: {
     display: 'flex',

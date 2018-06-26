@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
-import Banner from './images/banner.jpg';
-import Logo from 'images/literLogo@2x.png';
+import Banner from './images/literLogo@2x.png';
+// import Logo from 'images/literLogo@2x.png';
 
 const styles = (theme) => ({
   container: {
@@ -29,7 +29,7 @@ class SimpleImageHeader extends React.PureComponent {
         <div>
           <img
             className={classes.banner}
-            src={Logo}
+            src={Banner}
             alt={`LITER - 세상 모든 리뷰를 경험해보세요`}
           />
         </div>

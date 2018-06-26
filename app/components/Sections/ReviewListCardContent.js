@@ -54,9 +54,9 @@ class ReviewListCardContent extends React.Component {
           style={{ textDecoration: 'none' }}
         >
           <CardMedia
-          className={classes.media}
-          image={imageUrl}
-          title="Contemplative Reptile"
+            className={classes.media}
+            image={imageUrl}
+            title="Contemplative Reptile"
           />
         </Link>
         <div className={classes.mediaInnerButtonContainer}>
