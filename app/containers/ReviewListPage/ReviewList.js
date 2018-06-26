@@ -48,8 +48,9 @@ class ReviewList extends React.Component {
     window.removeEventListener('scroll', this.handleShowCreateReviewButton);
   }
 
+
   handleShowCreateReviewButton(e) {
-    console.log('handleShowCreateReviewButton');
+    // console.log('handleShowCreateReviewButton');
     const currentScrollY = window.scrollY;
     const { previousScrollY } = this.state;
     this.setState({

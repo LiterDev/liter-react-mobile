@@ -16,15 +16,12 @@ import history from 'history';
 import {
   LOGIN_REQUEST,
   LOGOUT_SUCCESS,
-  VALIDATE_REQUEST,
   AUTH_USER_INFO_REQUEST,
   AUTH_GET_ACC_TOKEN_REQUEST
 } from './constants';
 import {
   authLoaded,
   authLoadingError,
-  loadedValidateAuth,
-  errorLoadValidateAuth,
   loadAuthUserInfo,
   authUserInfoLoaded,
   authUserInfoLoadingError,
@@ -38,7 +35,7 @@ import { makeSelectAuth } from './selectors';
  */
 
 export function* setAuth({ username, password }) {
-  const requestURL = '/auth/signin';
+  const requestURL = '/auth/signIn';
   const options = {
     method: 'post',
     headers: {
@@ -51,10 +48,12 @@ export function* setAuth({ username, password }) {
   try {
     const response = yield call(request, requestURL, options);
     const data = response.data;
+    const data1 = response.data;
     // const accessToken = _.get(data, 'accessToken', '');
     // const refreshToken = _.get(data, 'refreshToken', '');
+
     yield put(authLoaded(fromJS(data)));
-    yield put(loadAuthUserInfo(data));
+    yield put(loadAuthUserInfo(data1));
   } catch (error) {
     let message;
     switch (error.status) {
@@ -79,7 +78,7 @@ export function* getAuthUserInfo(auth) {
   const requestURL = '/user/authInfo';
   const options = {
     withAuth: true
-  };
+  };console.log('123123')
 
   try {
     const response = yield call(request, requestURL, options);
@@ -88,7 +87,6 @@ export function* getAuthUserInfo(auth) {
 
     yield put(authUserInfoLoaded(data));
 
-    history.push('/');
     localStorage.setItem('access_token', accessToken);
     localStorage.setItem('refresh_token', refreshToken);
   } catch (error) {
@@ -113,7 +111,6 @@ export function* getAuthUserInfo(auth) {
 export function* getAccessToken() {
   const requestURL = '/auth/claimAccessToken';
   const options = {
-    method: 'post',
     withAuth: false,
     withRefreshToken: true
   };
@@ -125,8 +122,10 @@ export function* getAccessToken() {
     console.log('@@@@@@@@@@@@', data);
 
     yield put(accessTokenLoaded(fromJS(data)));
-    yield put(getAuthUserInfo({ auth: data }));
-    // history.push('/');
+    console.log('@@@@@@@@@@@@getAccessToken');
+    console.log(data);
+    // yield* put(getAuthUserInfo({ auth: data }));
+    yield put(yield* getAuthUserInfo({ auth: data }));
     // localStorage.setItem('access_token', accessToken);
     // localStorage.setItem('refresh_token', refreshToken);
   } catch (error) {
@@ -150,7 +149,6 @@ export function* getAccessToken() {
  * Root saga manages watcher lifecycle
  */
 export default function* authData() {
-  // yield takeLatest(VALIDATE_REQUEST, getValidate);
   yield takeLatest(AUTH_GET_ACC_TOKEN_REQUEST, getAccessToken);
   yield takeLatest(AUTH_USER_INFO_REQUEST, getAuthUserInfo);
   yield takeLatest(LOGIN_REQUEST, setAuth);

@@ -8,8 +8,8 @@ import Banner from './images/literLogo@2x.png';
 
 const styles = (theme) => ({
   container: {
-    marginTop: theme.spacing.unit * 4,
-    marginBottom: theme.spacing.unit * 4,
+    paddingTop: theme.spacing.unit * 4,
+    paddingBottom: theme.spacing.unit * 4,
     textAlign: 'center'
   },
   banner: {
@@ -20,10 +20,8 @@ const styles = (theme) => ({
 });
 
 class SimpleImageHeader extends React.PureComponent {
-  // eslint-disable-line react/prefer-stateless-function
   render() {
-    const { image, subText, classes } = this.props;
-    // console.log(this.props);
+    const { classes } = this.props;
     return (
       <div className={classes.container}>
         <div>
@@ -44,8 +42,6 @@ class SimpleImageHeader extends React.PureComponent {
 }
 SimpleImageHeader.propTypes = {
   classes: PropTypes.object,
-  image: PropTypes.string,
-  subText: PropTypes.string
 };
 
 export default withStyles(styles)(SimpleImageHeader);

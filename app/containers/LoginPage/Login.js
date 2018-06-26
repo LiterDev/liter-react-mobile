@@ -28,22 +28,7 @@ const styles = (theme) => ({
     backgroundColor: 'white',
     height: '100%',
     paddingRight: theme.spacing.unit * 4,
-    paddingLeft: theme.spacing.unit * 4,
-
-    display: 'flex',
-    flexDirection: 'column',
-    '& > :last-child': {
-      // float: 'left',
-      bottom: 0,
-      left: 0,
-      width: '100%',
-      position: 'absolute',
-      borderRadius: 0,
-      backgroundColor: theme.palette.gray[100],
-      borderTop: `1px solid ${theme.palette.gray[200]}`,
-      color: theme.palette.gray[500],
-      fontWeight: 'bold'
-    }
+    paddingLeft: theme.spacing.unit * 4
   },
   textField: {
     marginLeft: theme.spacing.unit,
@@ -62,46 +47,29 @@ const styles = (theme) => ({
 class Login extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      id: '',
-      password: '',
-      passwordConfirm: '',
-      mail: '',
-
-      selectedFile: null
-    };
-
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    const { auth, token, loading, history } = this.props;
+    const id = _.get(auth, 'user.id');
+    const prevLoading = prevProps.loading;
+    // console.log('===================componentDidUpdate==============');
+    if (prevLoading && !loading && token && id) {
+      // console.log(this.props);
+      history.push('/');
+    }
+  }
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    // console.log('===================getSnapshotBeforeUpdate==============');
+    // console.log('prevProps.loading', _.get(prevProps, 'loading'));
+    // console.log('props.loading', _.get(this.props, 'loading'));
   }
 
   handleChange = (name) => (event) => {
     this.setState({
       [name]: event.target.value
     });
-  };
-
-  fileChangedHandler = (event) => {
-    this.setState({ selectedFile: event.target.files[0] }, () => {
-      console.log(this.state);
-    });
-  };
-
-  uploadHandler = () => {
-    // console.log(this.state.selectedFile);
-    const formData = new FormData();
-    console.log('this.state.selectedFile', this.state.selectedFile);
-    formData.append(
-      'img',
-      this.state.selectedFile,
-      this.state.selectedFile.name
-    );
-    formData.append(
-      'img1',
-      this.state.selectedFile,
-      this.state.selectedFile.name
-    );
-    // axios.post('http://localhost:2017/up', formData);
-    axios.post('http://192.168.1.81:8080/sample/file', formData);
   };
 
   render() {
@@ -114,6 +82,24 @@ class Login extends React.PureComponent {
     };
 
     {
+      {
+        /*<form onSubmit={this.uploadHandler}>*/
+      }
+      {
+        /*<input type="file" onChange={this.fileChangedHandler} />*/
+      }
+      {
+        /*<button type="button" onClick={this.uploadHandler}>*/
+      }
+      {
+        /*Upload!*/
+      }
+      {
+        /*</button>*/
+      }
+      {
+        /*</form>*/
+      }
       /*<div className={classNames(classes.componentWrapper)}>*/
     }
     return (
@@ -122,12 +108,7 @@ class Login extends React.PureComponent {
           <meta name="description" content="LoginPage" />
         </Helmet>
         <SimpleImageHeader />
-        {/*<form onSubmit={this.uploadHandler}>*/}
-        {/*<input type="file" onChange={this.fileChangedHandler} />*/}
-        {/*<button type="button" onClick={this.uploadHandler}>*/}
-        {/*Upload!*/}
-        {/*</button>*/}
-        {/*</form>*/}
+
         <LoginForm pathname={pathname} {...this.props} />
       </div>
     );
@@ -140,7 +121,6 @@ Login.propTypes = {
   location: PropTypes.object.isRequired,
   onSubmitLogin: PropTypes.func,
   user: PropTypes.object,
-  id: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
   token: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   loading: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool])

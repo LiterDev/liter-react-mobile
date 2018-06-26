@@ -22,7 +22,7 @@ export default function configureStore(initialState = {}, history) {
     stateTransformer: (state) => state && state.toJS()
   });
 
-  const enhancers = [applyMiddleware(...middlewares), applyMiddleware(logger)];
+  const enhancers = [applyMiddleware(...middlewares)];
 
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
   /* eslint-disable no-underscore-dangle */

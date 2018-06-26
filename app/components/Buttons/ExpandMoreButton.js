@@ -37,6 +37,7 @@ function ExpandMoreButton(props) {
   const renderComponent = () => {
     const components = [
       <IconButton
+        key={'ExpandMoreButton' + label}
         className={classes.root}
         aria-label={'count dollar'}
         onClick={onClick}
@@ -44,6 +45,7 @@ function ExpandMoreButton(props) {
         {<ExpandMoreIcon className={classes.icon} />}
       </IconButton>,
       <span
+        key={'ExpandMoreLabel' + label}
         className={classNames(classes.label, {
           [classes.noMarginLeft]: reverse
         })}

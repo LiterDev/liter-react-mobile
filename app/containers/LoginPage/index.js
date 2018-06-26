@@ -37,10 +37,9 @@ const withConnect = connect(
   mapStateToProps,
   mapDispatchToProps
 );
-// const withReducer = injectReducer({ key: 'user', userReducer });
+
 const withSaga = injectSaga({ key: 'auth', saga: authSaga });
-//
-// export default withLogin;
+
 export default withRouter(compose(
   withConnect,
   withSaga

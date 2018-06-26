@@ -20,9 +20,6 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
-  VALIDATE_REQUEST,
-  VALIDATE_SUCCESS,
-  VALIDATE_ERROR,
   AUTH_USER_INFO_REQUEST,
   AUTH_USER_INFO_SUCCESS,
   AUTH_USER_INFO_ERROR,
@@ -31,6 +28,7 @@ import {
   AUTH_GET_ACC_TOKEN_ERROR
 } from './constants';
 
+import history from 'history';
 export function getAuth() {
   return {
     type: AUTH
@@ -100,23 +98,4 @@ export function accessTokenLoadingError(error, message) {
   };
 }
 
-export function loadValidateAuth(token) {
-  return {
-    type: VALIDATE_REQUEST,
-    token
-  };
-}
 
-export function loadedValidateAuth(token) {
-  return {
-    type: VALIDATE_SUCCESS,
-    token
-  };
-}
-
-export function errorLoadValidateAuth(error) {
-  return {
-    type: VALIDATE_ERROR,
-    error
-  };
-}

@@ -6,6 +6,7 @@
  * contain code that should be seen on all pages. (e.g. navigation bar)
  */
 
+import _ from 'lodash';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
@@ -66,6 +67,7 @@ const styles = (theme) => ({
   }
 });
 const appBarBlackList = ['/login', '/review/', '/welcome_set_favorite'];
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -97,6 +99,7 @@ class App extends React.Component {
   handleDrawer = () => {
     this.setState({ open: !this.state.open });
   };
+
   handleAppBarHidden = () => {
     for (let i = 0; i < appBarBlackList.length; i++) {
       if ((this.props.location.pathname || '').includes(appBarBlackList[i])) {
@@ -109,7 +112,7 @@ class App extends React.Component {
   render() {
     const { classes, auth, accessToken } = this.props;
     const { open, anchor } = this.state;
-    console.log('this.handleAppBarHidden()', this.handleAppBarHidden())
+    console.log('this.handleAppBarHidden()', this.handleAppBarHidden());
     const controlledOpen = this.handleAppBarHidden() ? false : open;
     return (
       <div className={classes.root}>
@@ -164,7 +167,6 @@ class App extends React.Component {
 }
 App.propTypes = {
   classes: PropTypes.object.isRequired,
-  onCheckValidate: PropTypes.func,
   onAutoLogin: PropTypes.func,
   auth: PropTypes.object,
   accessToken: PropTypes.string

@@ -10,22 +10,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 const styles = (theme) => ({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    '& > :last-child': {
-      // float: 'left',
-      bottom: 0,
-      left: 0,
-      width: '100%',
-      position: 'absolute',
-      borderRadius: 0,
-      backgroundColor: theme.palette.gray[100],
-      borderTop: `1px solid ${theme.palette.gray[200]}`,
-      color: theme.palette.gray[500],
-      fontWeight: 'bold'
-    }
-  },
+  container: {},
   button: {
     boxShadow: 'none',
     height: theme.spacing.unit * 6
@@ -127,7 +112,23 @@ class LoginForm extends React.Component {
       return '';
     }
 
-    const renderInput = (props) => (
+    const renderInput = inputFormData[camelPathname].map((data) => {
+      const { id, label, prop, type } = data;
+      return (
+        <TextField
+          key={id}
+          id={id}
+          label={label}
+          className={classes.textField}
+          value={this.state[prop]}
+          onChange={this.handleChange(prop)}
+          margin="normal"
+          type={type}
+        />
+      );
+    });
+
+    const renderInput2 = (props) => (
       <Input
         className={classNames(classes.input)}
         onChange={this.handleChange(props.key)}
@@ -138,34 +139,74 @@ class LoginForm extends React.Component {
       />
     );
 
-    return (
-      <section key={'signInSection'} className={classes.container}>
-        {renderInput({ key: 'username', placeholder: '사용자 이름 : test' })}
-        {renderInput({
-          type: 'password',
-          key: 'password',
-          placeholder: '비밀번호 : test1234!T'
-        })}
-        <Button
-          className={classNames(
-            classes.button,
-            classes.fillButton,
-            classes.disabled
-          )}
-          variant="contained"
-          color="primary"
-          onClick={() => {
-            onSubmitLogin(username, password);
-          }}
-        >
-          로그인
-        </Button>
-        <Button className={classes.button} color="primary">
-          <b>비밀번호가 기억나지 않나요?</b>
-        </Button>
-        <Button className={classes.button}>아직 회원이 아니신가요?</Button>
+    return [
+      renderInput2({ key: 'username', placeholder: '사용자 이름 : test' }),
+      renderInput2({ type:'password', key: 'password', placeholder: '비밀번호 : test1234!T' }),
+      <Button
+        className={classNames(
+          classes.button,
+          classes.fillButton,
+          classes.disabled
+        )}
+        variant="contained"
+        color="primary"
+        onClick={() => {
+          const { username, password } = this.state;
+          onSubmitLogin(username, password);
+        }}
+      >
+        로그인
+      </Button>,
+      <Button className={classes.button} color="primary">
+        <b>비밀번호가 기억나지 않나요?</b>
+      </Button>,
+      <Button className={classes.button}>아직 회원이 아니신가요?</Button>
+    ];
+
+    return [
+      <section key="loginForm-section-1">
+        <form className={classes.container} noValidate autoComplete="off">
+          {renderInput}
+          <Button
+            className={classes.fillButton}
+            variant="contained"
+            color="primary"
+            onClick={() => {
+              const { username, password } = this.state;
+              onSubmitLogin(username, password);
+            }}
+          >
+            로그인{_.get(auth, 'token')}
+          </Button>
+        </form>
+      </section>,
+      <section key="loginForm-section-2">
+        <div className={classes.helpMenu}>
+          <div>리터 계정이 없으세요?</div>
+          <div>
+            <Button color="primary" className={classes.button}>
+              <Link to="/sign_in">회원가입</Link>
+            </Button>
+          </div>
+        </div>
+        <div className={classes.helpMenu}>
+          <div>비밀번호 생각나지 않으세요?</div>
+          <div>
+            <Button color="primary" className={classes.button}>
+              <Link to="/find_password">찾기</Link>
+            </Button>
+          </div>
+        </div>
+        <div className={classes.helpMenu}>
+          <div>로그인</div>
+          <div>
+            <Button color="primary" className={classes.button}>
+              <Link to="/login">로그인</Link>
+            </Button>
+          </div>
+        </div>
       </section>
-    );
+    ];
   }
 }
 

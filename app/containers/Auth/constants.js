@@ -19,10 +19,6 @@ export const LOGOUT_REQUEST = 'liter-react-mobile/Auth/LOGOUT_REQUEST';
 export const LOGOUT_SUCCESS = 'liter-react-mobile/Auth/LOGOUT_SUCCESS';
 export const LOGOUT_ERROR = 'liter-react-mobile/Auth/LOGOUT_ERROR';
 
-export const VALIDATE_REQUEST = 'liter-react-mobile/Auth/VALIDATE_REQUEST';
-export const VALIDATE_SUCCESS = 'liter-react-mobile/Auth/VALIDATE_SUCCESS';
-export const VALIDATE_ERROR = 'liter-react-mobile/Auth/VALIDATE_ERROR';
-
 export const AUTH_USER_INFO_REQUEST = 'liter-react-mobile/Auth/AUTH_USER_INFO_REQUEST';
 export const AUTH_USER_INFO_SUCCESS = 'liter-react-mobile/Auth/AUTH_USER_INFO_SUCCESS';
 export const AUTH_USER_INFO_ERROR = 'liter-react-mobile/Auth/AUTH_USER_INFO_ERROR';

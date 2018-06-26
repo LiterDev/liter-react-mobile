@@ -16,9 +16,6 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
-  VALIDATE_REQUEST,
-  VALIDATE_SUCCESS,
-  VALIDATE_ERROR,
   AUTH_USER_INFO_REQUEST,
   AUTH_USER_INFO_SUCCESS,
   AUTH_USER_INFO_ERROR,
@@ -54,19 +51,6 @@ function authReducer(state = initialState, action) {
     case LOGIN_ERROR:
       return state.set('error', action.error).set('loading', false);
 
-    case VALIDATE_REQUEST:
-      return state
-        .set('loading', true)
-        .set('error', false)
-        .set('data', null);
-    case VALIDATE_SUCCESS:
-      return state
-        .set('data', action.data)
-        .set('loading', false)
-        .set('error', false);
-    case VALIDATE_ERROR:
-      return state.set('error', action.error).set('loading', false);
-
     case AUTH_USER_INFO_REQUEST:
       console.log('---- AUTH_USER_INFO_REQUEST', action.data)
       return state
@@ -83,9 +67,10 @@ function authReducer(state = initialState, action) {
       return state.set('error', action.error).set('loading', false);
 
     case AUTH_GET_ACC_TOKEN_REQUEST:
+      console.log('AUTH_GET_ACC_TOKEN_REQUEST')
       return state
         .set('loading', true)
-        .set('error', false)
+        .set('error', false);
         // .set('data', null);
     case AUTH_GET_ACC_TOKEN_SUCCESS:
       return state

@@ -68,7 +68,6 @@ DrawerMenu.propTypes = {
   classes: PropTypes.object.isRequired,
   auth: PropTypes.object,
   accessToken: PropTypes.string,
-  items: PropTypes.array
 };
 
 export default withStyles(styles)(DrawerMenu);

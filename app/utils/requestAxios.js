@@ -54,13 +54,13 @@ function checkStatus(response) {
  */
 export default function request(url, data = {}) {
   console.log('@@@ axios.request ::: ');
-  console.log(data);
+  // console.log(data);
   url = rootApiUrl + url;
 
   const { withAuth = false, withRefreshToken = false } = data;
   const authStore = selectAuth(store.getState());
   const accessToken = authStore.getIn(['data', 'accessToken']);
-  console.log({ withRefreshToken, accessToken, withAuth });
+  // console.log({ withRefreshToken, accessToken, withAuth });
 
   const headers = {};
   if (accessToken || withAuth) {
@@ -72,7 +72,7 @@ export default function request(url, data = {}) {
   // console.log('headers', headers);
 
   _.set(data, 'headers', _.merge(_.get(data, 'headers') || {}, headers));
-  console.log('axios data', data);
+  // console.log('axios data', data);
   return axios(Object.assign({}, { url }, data))
     .then(checkStatus)
     .then(parseJSON);

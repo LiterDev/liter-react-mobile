@@ -65,7 +65,7 @@ class ReviewListCardContent extends React.Component {
         </div>
       </div>,
       <CardContent key={'cardContent' + imageUrl + title}>
-        <Typography variant="p" gutterBottom>
+        <Typography variant="title" gutterBottom>
           <b>포르투갈에서 서핑 즐기기</b>
         </Typography>
         <Typography component="p">

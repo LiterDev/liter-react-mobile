@@ -16,10 +16,7 @@ import { withStyles } from '@material-ui/core/styles';
 // const drawerWidth = 240;
 
 const styles = (theme) => ({
-  root: {
-    // [theme.breakpoints.up('lg')]: {
-    // }
-  },
+  root: {},
   paper: {
     width: '50%'
   },
@@ -35,7 +32,14 @@ class AppDrawer extends React.PureComponent {
   // eslint-disable-line react/prefer-stateless-function
   render() {
     // const { anchor, open } = this.props;
-    const { theme, classes, anchor, open, handleDrawer } = this.props;
+    const {
+      theme,
+      classes,
+      auth,
+      open,
+      accessToken,
+      handleDrawer
+    } = this.props;
     return (
       <div className={classes.root}>
         {/*<Hidden>*/}
@@ -61,7 +65,7 @@ class AppDrawer extends React.PureComponent {
               )}
             </IconButton>
           </div>
-          <DrawerMenu {...this.props} />
+          <DrawerMenu auth={auth} accessToken={accessToken} />
         </SwipeableDrawer>
         {/*</Hidden>*/}
       </div>
