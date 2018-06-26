@@ -15,6 +15,9 @@ const styles = (theme) => ({
     boxShadow: 'none',
     height: theme.spacing.unit * 5
   },
+  disabled: {
+    backgroundColor: theme.paltte
+  },
   input: {
     // border: `1px solid ${theme.palette.border.default}`
     height: theme.spacing.unit * 5.5,
@@ -138,7 +141,7 @@ class LoginForm extends React.Component {
       renderInput2({ placeholder: '사용자 이름' }),
       renderInput2({ placeholder: '비밀번호' }),
       <Button
-        className={classNames(classes.button, classes.fillButton)}
+        className={classNames(classes.button, classes.fillButton, classes.disabled)}
         variant="contained"
         color="primary"
         onClick={() => {
