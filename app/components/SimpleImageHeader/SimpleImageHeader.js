@@ -1,16 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import LoginForm from 'components/LoginForm';
 import Banner from './images/banner.jpg';
 
-import { Link } from 'react-router-dom';
+import Typography from '@material-ui/core/Typography';
 
 const styles = (theme) => ({
+  container: {
+    marginTop: theme.spacing.unit * 4,
+    marginBottom: theme.spacing.unit * 4
+  },
   banner: {
     width: '100%'
-  }
-})
+  },
+});
 
 class SimpleImageHeader extends React.PureComponent {
   // eslint-disable-line react/prefer-stateless-function
@@ -18,14 +21,16 @@ class SimpleImageHeader extends React.PureComponent {
     const { image, subText, classes } = this.props;
     // console.log(this.props);
     return (
-      <header>
-        <a >
-          <img className={classes.banner} src={Banner} alt={`LITER - 세상 모든 리뷰를 경험해보세요`} />
-        </a>
+      <div className={classes.container}>
+        <img
+          className={classes.banner}
+          src={Banner}
+          alt={`LITER - 세상 모든 리뷰를 경험해보세요`}
+        />
         <div>
-          <span>세상 모든 리뷰를 경험해보세요</span>
+          <Typography variant="subheading" align="center">세상 모든 리뷰를 경험해보세요</Typography>
         </div>
-      </header>
+      </div>
     );
   }
 }

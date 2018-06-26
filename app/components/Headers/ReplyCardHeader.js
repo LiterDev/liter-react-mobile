@@ -11,13 +11,14 @@ import classNames from 'classnames';
 import CardHeader from '@material-ui/core/CardHeader';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
-import TextButton from 'components/Buttons/TextButton';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import red from '@material-ui/core/colors/red';
 
 const styles = (theme) => ({
   root: {
-    lineHeight: 'normal'
+    lineHeight: 'normal',
+    paddingLeft: 0,
+    paddingRight: 0,
   },
   avatar: {
     backgroundColor: red[500]
@@ -36,7 +37,7 @@ const styles = (theme) => ({
   }
 });
 
-class DefaultCardHeader extends React.PureComponent {
+class ReplyCardHeader extends React.PureComponent {
   render() {
     const { classes, avatarImageUrl } = this.props;
     return (
@@ -60,26 +61,21 @@ class DefaultCardHeader extends React.PureComponent {
             </Avatar>
           )
         }
-        action={
-          <IconButton>
-            <MoreHorizIcon />
-          </IconButton>
-        }
         title={
           <div>
-            <span className={classes.username} >Jimmey</span> <span className={classes.isFollow}>팔로우</span>
+            <span className={classes.username} >Jimmey</span> <span className={classes.subheader}>방금전</span>
           </div>
         }
-        subheader={<span className={classes.subheader}>방금전</span>}
+        subheader={<div><span>something ..somethinasdasdkansdkasndkg .....something  ...</span></div>}
       />
     );
 
   }
 }
 
-DefaultCardHeader.propTypes = {
+ReplyCardHeader.propTypes = {
   classes: PropTypes.object.isRequired,
   avatarImageUrl: PropTypes.string
 };
 
-export default withStyles(styles)(DefaultCardHeader);
+export default withStyles(styles)(ReplyCardHeader);

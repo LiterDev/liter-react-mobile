@@ -13,7 +13,7 @@ import IconButton from '@material-ui/core/IconButton';
 import FavoriteButton from 'components/Buttons/FavoriteButton';
 import ShareButton from 'components/Buttons/ShareButton';
 import ReplyButton from 'components/Buttons/ReplyButton';
-import DollarCountButton from 'components/Buttons/DollarCountButton';
+import ExpandMoreButton from 'components/Buttons/ExpandMoreButton';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import grey from '@material-ui/core/colors/grey';
 
@@ -51,7 +51,7 @@ class DefaultCardFooter extends React.PureComponent {
         <FavoriteButton label={'200'} />
         <ShareButton label={'4'} />
         <ReplyButton label={'10'} />
-        <DollarCountButton label={662.11} />
+        <ExpandMoreButton label={'$662.11'} />
       </CardActions>
     );
   }

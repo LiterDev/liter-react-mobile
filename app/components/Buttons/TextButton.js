@@ -4,34 +4,20 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
 
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
-const styles = (theme) => ({
-  root: {
-    backgroundColor: 'white'
-  },
-  icon: {
-  },
-  label: {
-  }
-});
+const styles = (theme) => ({});
 
 function TextButton(props) {
-  const { classes, onClick, label = '' } = props;
+  const {label} = this.props;
   return (
-    <div>
-      <Button
-        className={classes.root}
-        aria-label={'button'}
-        onClick={onClick}
-      >
-        <span className={classes.label}>{`${label}`}</span>
-      </Button>
-    </div>
+    <Button
+      {...props}
+    >
+      {label}
+    </Button>
   );
 }
 

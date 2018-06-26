@@ -24,6 +24,7 @@ import DefaultCardFooter from 'components/Footers/DefaultCardFooter';
 import Slider from 'components/Sliders/DefaultSlider';
 import ContentsFooter from 'components/Footers/ContentsFooter';
 import HashTagBox from 'components/Sections/HashTagBox';
+import ReplyBox from 'components/Sections/ReplyBox';
 
 const items = [
   {
@@ -32,7 +33,8 @@ const items = [
   },
   {
     title: 2,
-    youtubeId: 'sYxy7-tog0o'
+    imageUrl:
+      'http://image.ceci.co.kr/upload/ARTICLEINFOCON/1475928112796htr1p8q.jpg'
   },
   {
     title: 3,
@@ -63,25 +65,26 @@ const hashTagList = [
 ];
 const styles = (theme) => ({
   ReviewDetailRoot: {
-    background: 'white',
+    background: 'white'
   },
   header: {},
   contents: {
-    marginLeft: 16,
-    marginRight: 16
+    marginLeft: theme.spacing.unit * 2,
+    marginRight: theme.spacing.unit * 2
   },
   footer: {}
 });
 
-const avatarImageUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-6gG0UXRs6Mn7E5W0xWtMWl0gnvq4BXXwTtdj2LMXOHgGjjUo';
+const avatarImageUrl =
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-6gG0UXRs6Mn7E5W0xWtMWl0gnvq4BXXwTtdj2LMXOHgGjjUo';
 
 class ReviewDetail extends React.PureComponent {
   // eslint-disable-line react/prefer-stateless-function
 
-
   render() {
     const { classes } = this.props;
-    return (
+      {/*<ReplyBox />,*/}
+    return [
       <div className={classes.ReviewDetailRoot}>
         {/* SEO HELMET */}
         <Helmet titleTemplate="main Page" defaultTitle="main Page">
@@ -90,7 +93,7 @@ class ReviewDetail extends React.PureComponent {
             content="A React.js Boilerplate application"
           />
         </Helmet>
-        <DefaultCardHeader avatarImageUrl={avatarImageUrl}/>
+        <DefaultCardHeader avatarImageUrl={avatarImageUrl} />
 
         <Typography variant="title" gutterBottom align={'center'}>
           ReviewDetail Title
@@ -104,9 +107,11 @@ class ReviewDetail extends React.PureComponent {
           </Typography>
           <HashTagBox hashTagList={hashTagList} />
         </div>
-          <DefaultCardFooter />
+        <DefaultCardFooter />
       </div>
-    );
+      ,
+      <ReplyBox />
+    ];
   }
 }
 

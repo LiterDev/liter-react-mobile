@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import FavoriteButton from 'components/Buttons/FavoriteButton';
 import ReplyButton from 'components/Buttons/ReplyButton';
 import ShareButton from 'components/Buttons/ShareButton';
-import DollarCountButton from 'components/Buttons/DollarCountButton';
+import ExpandMoreButton from 'components/Buttons/ExpandMoreButton';
 
 const styles = (theme) => ({
   root: {
@@ -21,7 +21,7 @@ const ContentsFooter = () => (
     <FavoriteButton />
     <ReplyButton />
     <ShareButton />
-    <DollarCountButton />
+    <ExpandMoreButton />
   </footer>
 );
 

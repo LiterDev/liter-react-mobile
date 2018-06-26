@@ -3,16 +3,16 @@
  *
  * List all the features
  */
+import axios from 'axios';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
-
-import axios from 'axios';
-
 import { Helmet } from 'react-helmet';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
-import { withStyles } from '@material-ui/core/styles';
+import classNames from 'classnames';
+
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
@@ -21,8 +21,30 @@ import Modal from 'react-modal';
 import SimpleImageHeader from 'components/SimpleImageHeader';
 import LoginForm from 'components/LoginForm';
 import './style.scss';
+import gray from '@material-ui/core/colors/grey';
 
 const styles = (theme) => ({
+  componentWrapper: {
+    backgroundColor: 'white',
+    height: '100%',
+    paddingRight: theme.spacing.unit * 4,
+    paddingLeft: theme.spacing.unit * 4,
+
+    display: 'flex',
+    flexDirection: 'column',
+    '& > :last-child': {
+      // float: 'left',
+      bottom: 0,
+      left: 0,
+      width: '100%',
+      position: 'absolute',
+      borderRadius: 0,
+      backgroundColor: theme.palette.gray[100],
+      borderTop: `1px solid ${theme.palette.gray[200]}`,
+      color: theme.palette.gray[500],
+      fontWeight: 'bold'
+    }
+  },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
@@ -91,22 +113,20 @@ class Login extends React.PureComponent {
       return RegExp('login|sign_in|find_password').test(pathname);
     };
 
-    console.log(this.props);
-    // if (token) {
-    //   return <Redirect to="/" />;
-    // }
-
+    {
+      /*<div className={classNames(classes.componentWrapper)}>*/
+    }
     return (
-      <div>
+      <div className={classNames(classes.componentWrapper)}>
         <Helmet titleTemplate="%s - Login" defaultTitle="title">
           <meta name="description" content="LoginPage" />
         </Helmet>
         <SimpleImageHeader />
         {/*<form onSubmit={this.uploadHandler}>*/}
-        <input type="file" onChange={this.fileChangedHandler} />
-        <button type="button" onClick={this.uploadHandler}>
-          Upload!
-        </button>
+        {/*<input type="file" onChange={this.fileChangedHandler} />*/}
+        {/*<button type="button" onClick={this.uploadHandler}>*/}
+        {/*Upload!*/}
+        {/*</button>*/}
         {/*</form>*/}
         <LoginForm pathname={pathname} {...this.props} />
       </div>

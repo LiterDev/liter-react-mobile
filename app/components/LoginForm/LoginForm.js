@@ -1,17 +1,24 @@
+import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { Route, Switch, Link, Redirect, withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
+
+import Input from '@material-ui/core/Input';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-import _ from 'lodash';
-import './style.scss';
-
 const styles = (theme) => ({
-  container: {
-    // display: 'flex',
-    // flexWrap: 'wrap'
+  container: {},
+  button: {
+    boxShadow: 'none',
+    height: theme.spacing.unit * 5
+  },
+  input: {
+    // border: `1px solid ${theme.palette.border.default}`
+    height: theme.spacing.unit * 5.5,
+    marginBottom: theme.spacing.unit
   },
   textField: {
     marginLeft: theme.spacing.unit,
@@ -19,6 +26,8 @@ const styles = (theme) => ({
     width: '100%'
   },
   fillButton: {
+    marginTop: theme.spacing.unit * 1.5,
+    marginBottom: theme.spacing.unit * 2,
     width: '100%'
   },
   menu: {
@@ -92,18 +101,11 @@ class LoginForm extends React.Component {
   };
 
   render() {
-    const {
-      classes,
-      location,
-      pathname,
-      onSubmitLogin,
-      auth
-    } = this.props;
+    const { classes, location, pathname, onSubmitLogin, auth } = this.props;
     const camelPathname = _.camelCase(pathname);
-    console.log('camelPathname', camelPathname)
 
     if (!inputFormData[camelPathname]) {
-      return ''
+      return '';
     }
 
     const renderInput = inputFormData[camelPathname].map((data) => {
@@ -121,6 +123,36 @@ class LoginForm extends React.Component {
         />
       );
     });
+
+    const renderInput2 = (props) => (
+      <Input
+        key={props.placeholder}
+        className={classNames(classes.input)}
+        type="text"
+        disableUnderline
+        {...props}
+      />
+    );
+
+    return [
+      renderInput2({ placeholder: '사용자 이름' }),
+      renderInput2({ placeholder: '비밀번호' }),
+      <Button
+        className={classNames(classes.button, classes.fillButton)}
+        variant="contained"
+        color="primary"
+        onClick={() => {
+          const { username, password } = this.state;
+          onSubmitLogin(username, password);
+        }}
+      >
+        로그인
+      </Button>,
+      <Button className={classes.button} color="primary">
+        <b>비밀번호가 기억나지 않나요?</b>
+      </Button>,
+      <Button className={classes.button}>아직 회원이 아니신가요?</Button>
+    ];
 
     return [
       <section key="loginForm-section-1">

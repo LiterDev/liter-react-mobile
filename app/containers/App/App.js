@@ -17,7 +17,7 @@ import FeaturePage from 'containers/FeaturePage/Loadable';
 import HomePage from 'containers/HomePage';
 import ReviewListPage from 'containers/ReviewListPage';
 import ReviewDetailPage from 'containers/ReviewDetailPage';
-import LoginPage from 'containers/LoginPage';
+import LoginPage from 'containers/LoginPage/Loadable';
 import WelcomeSetFavoritePage from 'containers/WelcomeSetFavoritePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage';
 

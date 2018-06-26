@@ -19,7 +19,8 @@ const modalHeaderStyle = {
 const rootStyle = {
   paddingTop: 48,
   // wtf slick width issue
-  width: '100vw'
+  width: '100vw',
+  height: '100vh',
 };
 
 const withClosePageWrapper = () => (WrappedComponent) => {
